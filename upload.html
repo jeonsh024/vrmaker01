@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+<meta charset="utf-8" /> 
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+<title>upload</title>
+<meta name="description" content="">
+<meta name="keywords"    content="">
+<meta name="author"      content="">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/subimport.css" type="text/css"/>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCK6pBiLGFYIsXepH-6p_FgHz50_XrmkQ&libraries=places&callback=initAutocomplete" async defer></script>
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">
+<!--[if lt IE 9]><script src="js/IE9.js"></script><![endif]-->     
+<!--[if lt IE 9]><script src="js/html5.js"></script><![endif]--> 
+</head>
+   
+
+<body> 
+  <div id="sikpNav" class="hide">
+	<p><a href="#contents">본문바로가기</a></p>
+	<p><a href="#gnb">메뉴바로가기</a></p>	
+</div>
+<header id="header" class="cf login-header">
+	<div class="inner-wrap cf">
+   		<h1>
+   			<a href="index.html"><img src="images/main/logo_001.png" alt="logo"></a> 
+   		</h1>
+   		<nav id="nav">
+   			<ul id="gnb" class="cf">
+   				<li><a href="index.html">Service</a></li>
+   				<li><a href="technology.html">Technology</a></li>
+   				<li><a href="studio.html">Studio</a></li>
+   				<li><a href="experience.html">Experience</a></li>
+   				<li><a href="about.html">About</a></li>
+   				<li><a href="pricing.html">Pricing</a></li>
+   			</ul>
+   		</nav>
+   		<p class="top-menu cf">
+   			<a href="mypage.html"> My Page </a>
+   			<a href="upload.html" class="creatVrBtn"> Create VR </a>
+   			<a href="javascript:"> Sign out </a>
+   				<span class="lan_contents cf">
+   					<a href="javascript:" class="this">ENG</a>
+   					<a href="javascript:">KOR</a>
+   				</span>
+   			</p> 			
+   			<div id="menu_btn">
+   				<p class="menu_btn_line"></p>
+   				<p class="menu_btn_line"></p>
+   				<p class="menu_btn_line"></p>
+   				<p class="menu_btn_line"></p>
+   			</div> <!-- menu_btn -->
+   			<nav id="nav_m">
+   				<div class="nav_inner">
+   					<ul id="gnb_m" class="cf">
+   						<li><a href="index.html">Service</a></li>
+   						<li><a href="technology.html">Technology</a></li>
+   						<li><a href="studio.html">Studio</a></li>
+   						<li><a href="experience.html">Experience</a></li>
+   						<li><a href="about.html">About</a></li>
+   						<li><a href="pricing.html">Pricing</a></li>
+   					</ul>
+   					<ul class="footer_menu_m">
+   						<li><a href="contact.html">Contact</a></li>
+   						<li><a href="https://blog.naver.com/atojet">blog</a></li>
+   						<li><a href="javascript:"> Sign out </a></li>
+   					</ul>
+   					<span class="lan_contents cf">
+   						<a href="javascript:" class="this">ENG</a>
+   						<a href="javascript:">KOR</a>
+   					</span>
+   					<p class="login cf">
+   						<a href="upload.html" class="creatVrBtn"> Create VR </a>
+   						<a href="mypage.html"> My Page </a>
+   					</p>
+   				</div>
+   			</nav>
+ 	</div> <!-- //inner-wrap -->
+   	</header> <!-- //header -->
+	
+	<section id="upload_nav">
+		<div class="inner-wrap cf">
+			<ul class="cf">
+				<li class="on cf"><p class="upload_num">1</p> Upload file </li>
+				<li class="cf"><p class="upload_num">2</p> Edit information</li>
+				<li class="cf"><p class="upload_num">3</p> Make tour</li>
+			</ul>
+		</div><!-- //inner-wrap -->
+	</section><!-- //visual -->
+	<div id="container">
+		<section id="contents" class="alert_wrap_bg">
+			<div class="inner-wrap cf">
+				<div class="project cf">
+					<form class="project_form">
+						<div class="project_step_1">
+							<div class="step01">
+								<div class="dragdrop">
+									<img src="images/main/dragdrop.png" width="450" />
+									<h2>Drag & Drop</h2>
+									<span>Drag and drop files here to upload</span>
+									<div class="dragdrop_section">
+										<form onsubmit="return fileCheck(this.file.value);">
+											<label class="dragdrop_file">or Select file to upload
+											<input type="file" onclick="control_image()">
+											</label>
+										</form>
+									</div>
+									<p>You have total <em class="bold">100GB</em> and now <em class="red">70.45GB</em> used.</p>
+								</div>
+								<div class="storage_bar"><div class="storage_cnt"></div></div>
+							</div>
+						</div> <!-- //project_step_1 -->
+						<div class="project_step_2">
+							<div class="project_info">
+								<label class="project_title cf">Project Title<p>Max character <em class="bold">100</em></p></label>
+								<input type="text" name="name" placeholder="" maxlength="100">
+							</div>
+							<div id="preview_img" class="project_option cf">
+								<h2>Feature Image</h2>
+								<div class="project_left prj">
+									<div class="project_left_wrap">
+										<p class="title_section">Hanok Village in Seoul</p>
+										<p class="author_name_section">leokim</p>
+										<p class="location_section">seoul, korea</p>
+										<p class="ratio_section"></p>
+									</div>
+									<img src="images/main/upload_info.jpg" alt="preview_img" id="preview_img">
+								</div>
+								<div class="project_right prj cf">
+									<div class="cf">
+										<p class="launch_screen">Launching screen
+											<label class="switch">
+												<input type="checkbox" name="checkbox1" value="Y" class="launch_screen_btn">
+												<span class="switch_slider"></span>
+											</label>
+										</p>
+										<label class="upload_file">
+											<input type="file" class="up_video">Upload Photo or Video +
+										</label>
+									</div>
+									<div class="cf">
+										<p>Project Title
+											<label class="switch">
+												<input type="checkbox" name="">
+												<span class="switch_slider"></span>
+											</label>
+										</p>
+										<p class="ml scene_rotation">Project Location
+											<label class="switch">
+												<input type="checkbox" checked="checked" name="">
+												<span class="switch_slider"></span>
+											</label>
+										</p>
+									</div>
+									<div class="cf">
+										<p>Author name
+											<label class="switch">
+												<input type="checkbox" checked="checked" name="">
+												<span class="switch_slider"></span>
+											</label>
+										</p>
+										<p class="ml scene_rotation">Scene Auto Rotation
+											<label class="switch">
+												<input type="checkbox" name="">
+												<span class="switch_slider"></span>
+											</label>
+										</p>
+									</div>
+									<div class="cf">
+										<p class="up_logo">Your Logo
+											<label class="switch">
+												<input type="checkbox" checked="checked" name="checkbox2" value="Y" onclick="text_switch2()">
+												<span class="switch_slider"></span>
+											</label>
+										</p>
+										<label class="logo_file">
+											<input type="file" name="checkbox2" value="Y" class="logo_file_up">
+											Upload Logo
+										</label>
+									</div>
+									<div class="bg_music cf">
+										<p>Backgroung Music</p>
+										<label class="music_file">
+											<input type="file" class="up_music">
+											Add music +
+										</label>
+										<div class="music_file_name">
+											<span class="music_name">music.mp3</span>
+											<a href="javascript:" class="delete_music"><i class="xi-close"></i></a>
+										</div>
+									</div>
+								</div> <!-- //project_right -->
+								<uj class="project_location cf">
+									<li>
+										<h2>Project Information</h2>
+										<input type="text" name="">
+										<form class="share_option_btn">
+											<label class="share_option">
+												<input type="radio" name="share_option" checked="checked">
+												<span class="checkmark5"></span>
+												<label for="share_on"></label>
+												ON
+												<span>Anyone on the internet ca find and acces.</span>
+											</label>
+											<label class="share_option">
+												<input type="radio" name="share_option">
+												<span class="checkmark5"></span>
+												OFF - Private
+												<span>Only Author can access.</span>
+											</label>
+										</form>
+									</li>
+									<li>
+										<h2>Project Location</h2>
+										<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+										<div id="map">
+											<img src="images/main/map.png"/>
+										</div>
+									</li>
+
+								</uj>
+								<p class="btn_wrap cf">
+									<a href="javascript:" class="cancel_btn">Cancel</a>
+									<a href="javascript:" class="save_btn" onclick="CheckSpaces()">
+										<span class="saveBtn">Save</span>
+										<span class="loadBtn"><i class="fa fa-spinner fa-spin"></i></span>
+									</a>
+								</p>
+								
+							</div> <!-- //project_option -->
+
+						</div> <!-- //project_step_2 -->
+
+					</form>
+				</div> <!-- //project -->
+				<div class="alert_wrap">
+					<h2>PC를 이용해주세요</h2>
+				</div>
+			</div><!-- //inner-wrap -->
+		</section><!-- //content -->
+	</div><!-- //container -->
+	
+<footer id="footer">
+	<div class="inner-wrap cf">
+		<p class="logo"><img src="images/main/logo_001.png" alt="logo"></p>
+		<ul class="foot_menu cf">
+			<li><a href="index.html">Service</a></li>
+			<li><a href="technology.html">Technology</a></li>
+			<li><a href="studio.html">Studio</a></li>
+			<li><a href="experience.html">Experiences</a></li>
+		</ul>
+		<div class="sns cf">
+			<a href="https://www.youtube.com/channel/UCLVNeKoWTWLuueh_GWp_a1w" target="_blank"><img src="images/main/youtube.jpg" alt="youtube" /></a>
+			<a href="https://www.facebook.com/vrmaker" target="_blank" ><img src="images/main/facebook.jpg" alt="facebook" /></a>
+		</div>
+		<p class="ft_info">
+			(주)에이투젯ㅣ대표자: 김성국 | 
+			TEL:070-4388-7767 | E-MAIL: info@vrmaker.io |
+			제주특별자치도 제주시 아란3길 13-3, 202호 |
+			개인정보보호책임자: 김성국 통신판매업: 제 2018-서울마포-0060호<br/>
+			<em>Copyright © 2018 Atojet Corp. All rights reserved.</em>
+		</p>
+		<ul class="f_link cf">
+			<li><a href="about.html">About VRmaker</a></li>
+			<li><a href="contact.html">Contact</a></li>
+			<li><a href="privacy.html">Privacy Policy</a></li>
+			<li><a href="terms.html">Terms of Use</a></li>
+			<li><a href="https://blog.naver.com/atojet">blog</a></li>
+		</ul>
+	</div>
+	<div id="top"><i class="fas fa-chevron-up"></i></div>
+</footer>
+
+
+
+
+  <script type="text/javascript" src="js/jquery.js"> </script>
+  <script type="text/javascript" src="js/jquery-ui.min.js"> </script>   
+  <script type="text/javascript" src="js/prefixfree.js"> </script>
+  <script type="text/javascript" src="js/common.js"> </script>
+  <script type="text/javascript" src="js/main.js"> </script>
+  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+<script type="text/javascript">
+	//$('#toggle-one').bootstrapToggle();var map;
+ //      function initMap() {
+ //        map = new google.maps.Map(document.getElementById('map'), {
+ //          center: {lat: -34.397, lng: 150.644},
+ //          zoom: 8
+ //        });
+
+
+ //      }
+
+	// initMap();
+	function initAutocomplete() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -33.8688, lng: 151.2195},
+          zoom: 13,
+          mapTypeId: 'roadmap'
+        });
+
+        // Create the search box and link it to the UI element.
+        var input = document.getElementById('pac-input');
+        var searchBox = new google.maps.places.SearchBox(input);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener('bounds_changed', function() {
+          searchBox.setBounds(map.getBounds());
+        });
+
+        var markers = [];
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener('places_changed', function() {
+          var places = searchBox.getPlaces();
+
+          if (places.length == 0) {
+            return;
+          }
+
+          // Clear out the old markers.
+          markers.forEach(function(marker) {
+            marker.setMap(null);
+          });
+          markers = [];
+
+          // For each place, get the icon, name and location.
+          var bounds = new google.maps.LatLngBounds();
+          places.forEach(function(place) {
+            if (!place.geometry) {
+              console.log("Returned place contains no geometry");
+              return;
+            }
+            var icon = {
+              url: place.icon,
+              size: new google.maps.Size(71, 71),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(25, 25)
+            };
+
+            // Create a marker for each place.
+            markers.push(new google.maps.Marker({
+              map: map,
+              icon: icon,
+              title: place.name,
+              position: place.geometry.location
+            }));
+
+            if (place.geometry.viewport) {
+              // Only geocodes have viewport.
+              bounds.union(place.geometry.viewport);
+            } else {
+              bounds.extend(place.geometry.location);
+            }
+          });
+          map.fitBounds(bounds);
+        });
+      }
+
+initAutocomplete();
+
+
+</script>
+ </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+<meta charset="utf-8" /> 
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Edit Project</title>
+<meta name="description" content="">
+<meta name="keywords"    content="">
+<meta name="author"      content="">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+<link rel="stylesheet" href="css/subimport.css" type="text/css"/>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCK6pBiLGFYIsXepH-6p_FgHz50_XrmkQ&libraries=places&callback=initAutocomplete3" async defer></script>
+<!--[if lt IE 9]><script src="js/IE9.js"></script><![endif]-->     
+<!--[if lt IE 9]><script src="js/html5.js"></script><![endif]--> 
+</head>
+<body> 
+<header id="header" class="cf">
+   	<div class="top_contents cf">
+   		<div class="left_c cf">
+   			<a href="javascript:" class="backBtn fl" onclick="window.history.back()"><i class="xi-arrow-left"></i></a>
+   			<p class="user_profile fl"><a href="javascript:"><img src="images/main/team04.png" alt="user_profile"></a></p>
+   			<div class="membership fl">
+   				<h3>Enterprise</h3>
+   				<p class="user_name"><a href="javascript:">Leo Kim</a></p>
+   			</div>
+   		</div>
+   		<div class="right_c">
+   			<ul class="control_list cf">
+   				<li>
+   					<a href="javascript:"><i class="xi-forum-o"></i></a>
+   					<span class="total_comment">0</span>
+   				</li>
+   				<li>
+   					<a href="javascript:"><i class="xi-heart"></i></a>
+   					<span class="total_like">1</span>
+   				</li>
+   				<li>
+   					<a href="javascript:"><i class="xi-share"></i></a>
+   					<span class="total_share">0</span>
+   				</li>
+   				<li>
+   					<a href="javascript:" class="control_btn">
+   						<span class="open_control"><i class="xi-ellipsis-h"></i></span>
+   						<span class="close_control"><i class="xi-close"></i></span>
+   					</a>
+   					<ul class="control_wrap">
+   						<li><a href="javascript:"><i class="xi-focus-frame"></i></a></li>
+   						<li><a href="javascript:"><img src="images/icons/vr-glasses.png" alt="vr-glasses"></a></li>
+   						<li><a href="javascript:"><i class="xi-map"></i></a></li>
+   						<li><a href="javascript:"><img src="images/icons/INFO.png" alt="INFO"></a></li>
+   						<li><a href="javascript:"><img src="images/icons/audio_icon.png" alt="audio_icon"></a></li>
+   						<li><a href="javascript:"><i class="xi-qr-code"></i></a></li>
+   					</ul>
+   				</li>
+   			</ul>
+   		</div>
+   	</div> <!-- //.top_contents -->
+</header> <!-- //header -->
+<div id="container">
+	<section id="contents">
+		<div class="view_project_bg">
+		</div>
+	</section><!-- //content -->
+</div><!-- //container -->
+
+
+
+  <script type="text/javascript" src="js/jquery.js"> </script>
+  <script type="text/javascript" src="js/jquery-ui.min.js"> </script>   
+  <script type="text/javascript" src="js/prefixfree.js"> </script>
+  <script type="text/javascript" src="js/common.js"> </script>
+  <script type="text/javascript" src="js/main.js"> </script>
+  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+<script type="text/javascript">
+
+function initAutocomplete3() {
+        var map3 = new google.maps.Map(document.getElementById('map3'), {
+          center: {lat: -33.8688, lng: 151.2195},
+          zoom: 13,
+          mapTypeId: 'roadmap'
+        });
+
+        // Create the search box and link it to the UI element.
+        var input = document.getElementById('pac-input');
+        var searchBox = new google.maps.places.SearchBox(input);
+        map3.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+        // Bias the SearchBox results towards current map's viewport.
+        map3.addListener('bounds_changed', function() {
+          searchBox.setBounds(map3.getBounds());
+        });
+
+        var markers = [];
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener('places_changed', function() {
+          var places = searchBox.getPlaces();
+
+          if (places.length == 0) {
+            return;
+          }
+
+          // Clear out the old markers.
+          markers.forEach(function(marker) {
+            marker.setMap(null);
+          });
+          markers = [];
+
+          // For each place, get the icon, name and location.
+          var bounds = new google.maps.LatLngBounds();
+          places.forEach(function(place) {
+            if (!place.geometry) {
+              console.log("Returned place contains no geometry");
+              return;
+            }
+            var icon = {
+              url: place.icon,
+              size: new google.maps.Size(71, 71),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(25, 25)
+            };
+
+            // Create a marker for each place.
+            markers.push(new google.maps.Marker({
+              map: map,
+              icon: icon,
+              title: place.name,
+              position: place.geometry.location
+            }));
+
+            if (place.geometry.viewport) {
+              // Only geocodes have viewport.
+              bounds.union(place.geometry.viewport);
+            } else {
+              bounds.extend(place.geometry.location);
+            }
+          });
+          map3.fitBounds(bounds);
+        });
+      }
+	
+var isplay = true;
+
+$(".control_btn").on("click", function(){
+	if(isplay){
+		$(".control_wrap").slideDown()
+		$(".control_btn .open_control").hide()
+		$(".control_btn .close_control").css({display:"block"}).show()
+	}else{
+		$(".control_wrap").slideUp()
+		$(".control_btn .open_control").show()
+		$(".control_btn .close_control").hide()
+	}
+	
+	isplay = !isplay;	
+})
+	
+
+</script>
+ </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
